@@ -1,0 +1,107 @@
+.container {
+    display: grid;
+    width: 100%;
+    grid-template-areas:
+    "head head head"
+    "cityName placeText cityImage"
+    "cityDate placeText cityImage"
+    "submit forecast cityImage"
+    "submit forecast cityImage";
+    border: 1px solid black;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(5,1fr);
+}
+
+#header {
+    grid-area: head;
+    text-align: center;
+    background-color: lightgrey;
+}
+
+#name {
+    grid-area: cityName;
+    padding: 20px 20px 20px 20px;
+}
+
+#date {
+    grid-area: cityDate;
+    padding: 20px 20px 20px 20px;
+}
+
+#image {
+    grid-area: cityImage;
+    background-image: url(placeholder.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 10px 10px 10px 10px;
+}
+
+#submit {
+    grid-area: submit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 20px 50px 20px;
+}
+
+#placeholder {
+    grid-area: placeText;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    text-align: center;
+    margin: 20px 20px 20px 20px;
+    font-size: large;
+}
+
+#forecast {
+    grid-area: forecast;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: center;
+    margin: 20px 20px 20px 20px;
+    font-size: large;
+}
+
+input[type=text] {
+    border:0;
+    box-shadow: 0 0 5px 0 lightgray;
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    font-size: medium;
+    padding: 10px;
+}
+
+button[type=button] {
+    width: 100%;
+    height: 100%;
+    font-size: medium;
+    border:0;
+    box-shadow: 0 0 5px 0 darkgray;
+    border-radius: 10px;
+}
+
+@media(max-width:600px){
+    .container {
+        display: grid;
+        width: 100%;
+        grid-template-areas:
+        "head"
+        "cityName"
+        "cityDate"
+        "submit"
+        "submit"
+        "placeText"
+        "placeText"
+        "forecast"
+        "forecast"
+        "cityImage"
+        "cityImage";
+        border: 1px solid black;
+        grid-template-columns:1fr;
+        grid-template-rows: repeat(11,1fr);
+    }
+}
