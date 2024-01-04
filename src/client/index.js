@@ -1,5 +1,5 @@
+import './styles/styles.scss'
 projectData = {}
-//let geonames_ID = ''
 let weatherbit_Key = '1480091bdd174b2d985790709b87201b'
 let pixabay_Key = '41352822-6ee0ea802d31538dd01476bfa'
 let cityName = ''
@@ -12,21 +12,16 @@ let month = date.getMonth() + 1
 let year = date.getFullYear()
 let currentDate = month+'-'+day+'-'+year
 
-fetch('/all')
-    .then(res=>res.json())
-    .then(projectData=>{
-        //geonames_ID = projectData.geonames_ID
-        weatherbit_Key = projectData.weatherbit_Key
-        pixabay_Key = projectData.pixabay_Key
-    }) 
+function fetchAll() {
+    fetch('/all')
+        .then(res=>res.json())
+        .then(projectData=>{
+            weatherbit_Key = projectData.weatherbit_Key
+            pixabay_Key = projectData.pixabay_Key
+        }) 
+}
 
-/*
-fetch('http://api.geonames.org/postalCodeSearchJSON?postalcode=10023&country=US&username=hedelman4')
-    .then(res=>res.json())
-    .then(geoData=>{
-        console.log(geoData)
-    })
-*/
+fetchAll
 
 async function getWeatherData(cityName) {
     await fetch('https://api.weatherbit.io/v2.0/forecast/daily?city='+cityName+'&units=I&key='+weatherbit_Key)
