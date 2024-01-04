@@ -1,18 +1,70 @@
 projectData = {}
+//let geonames_ID = ''
+let weatherbit_Key = '1480091bdd174b2d985790709b87201b'
+let pixabay_Key = '41352822-6ee0ea802d31538dd01476bfa'
+let cityName = ''
+let imageURL = ''
+let weatherForecast = ''
+let weatherDataLength = 16
+const date = new Date()
+let day = date.getDate()
+let month = date.getMonth() + 1
+let year = date.getFullYear()
+let currentDate = month+'-'+day+'-'+year
 
-fetch('/all').then(res=> {
-    projectData = res.json()
-    console.log(projectData)
-})
+fetch('/all')
+    .then(res=>res.json())
+    .then(projectData=>{
+        //geonames_ID = projectData.geonames_ID
+        weatherbit_Key = projectData.weatherbit_Key
+        pixabay_Key = projectData.pixabay_Key
+    }) 
 
-fetch('http://api.geonames.org/postalCodeSearchJSON?postalcode=10023&country=US&username=hedelman4').then(res=> {
-    console.log(res.json())
-})
+/*
+fetch('http://api.geonames.org/postalCodeSearchJSON?postalcode=10023&country=US&username=hedelman4')
+    .then(res=>res.json())
+    .then(geoData=>{
+        console.log(geoData)
+    })
+*/
 
-fetch('https://api.weatherbit.io/v2.0/forecast/daily?lat=40.77638&lon=-73.982652&units=I&key=1480091bdd174b2d985790709b87201b').then(res=> {
-    console.log(res.json())
-})
+async function getWeatherData(cityName) {
+    await fetch('https://api.weatherbit.io/v2.0/forecast/daily?city='+cityName+'&units=I&key='+weatherbit_Key)
+        .then(res=>res.json())
+        .then(weatherData=>{
+            weatherForecast = weatherData['data'][document.getElementById('inputDate').selectedIndex - 1]
+            console.log(weatherForecast)
+        })
+        document.getElementById('forecast').innerHTML = 'Temperature: '+weatherForecast['temp']+'<br>'+weatherForecast['weather']['description'];
+}
 
-fetch('https://pixabay.com/api/?key=41352822-6ee0ea802d31538dd01476bfa&q=Manhattan&image_type=photo').then(res=> {
-    console.log(res.json())
-})
+async function getImageData(cityName) {
+    await fetch('https://pixabay.com/api/?key='+pixabay_Key+'&q='+cityName+'&image_type=photo')
+        .then(res=>res.json())
+        .then(imageData=>{
+            imageURL = imageData['hits'][0]['largeImageURL']
+        })
+        document.getElementById('image').style.backgroundImage = "url('"+imageURL+"')"
+}
+
+async function performAction() {
+    cityName = document.getElementById('inputName').value
+    travDate = document.getElementById('inputDate').value
+    getWeatherData(cityName)
+    getImageData(cityName)
+    document.getElementById('placeholder').innerHTML = 'The weather forecast in '+cityName+' on '+travDate+' will be:'
+}
+
+document.getElementById('submit').addEventListener('click', performAction)
+
+for (let i = 0; i < weatherDataLength; i++) {
+    let date = new Date()
+    date.setDate(date.getDate()+i)
+    let day = date.getDate()
+    let month = date.getMonth() + 1
+    let year = date.getFullYear()
+    let currentDate = month+'-'+day+'-'+year
+    var option = document.createElement('option')
+    option.text = currentDate
+    document.getElementById('inputDate').add(option)
+}

@@ -21,16 +21,17 @@
 #name {
     grid-area: cityName;
     padding: 20px 20px 20px 20px;
+    margin: 10px 10px 10px 10px;
 }
 
 #date {
     grid-area: cityDate;
     padding: 20px 20px 20px 20px;
+    margin: 10px 10px 10px 10px;
 }
 
 #image {
     grid-area: cityImage;
-    background-image: url(placeholder.jpg);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -65,7 +66,7 @@
     font-size: large;
 }
 
-input[type=text] {
+input[type=text], select {
     border:0;
     box-shadow: 0 0 5px 0 lightgray;
     border-radius: 10px;
