@@ -27,6 +27,5 @@ app.get('/', function (req, res) {
 })
 
 app.get('/all', function (req, res) {
-    console.log(projectData)
     res.send(projectData)
 })

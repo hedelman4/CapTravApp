@@ -1,4 +1,4 @@
-import './styles/styles.scss'
+//import './styles/styles.scss'
 projectData = {}
 let weatherbit_Key = '1480091bdd174b2d985790709b87201b'
 let pixabay_Key = '41352822-6ee0ea802d31538dd01476bfa'
@@ -6,11 +6,6 @@ let cityName = ''
 let imageURL = ''
 let weatherForecast = ''
 let weatherDataLength = 16
-const date = new Date()
-let day = date.getDate()
-let month = date.getMonth() + 1
-let year = date.getFullYear()
-let currentDate = month+'-'+day+'-'+year
 
 function fetchAll() {
     fetch('/all')
@@ -28,7 +23,6 @@ async function getWeatherData(cityName) {
         .then(res=>res.json())
         .then(weatherData=>{
             weatherForecast = weatherData['data'][document.getElementById('inputDate').selectedIndex - 1]
-            console.log(weatherForecast)
         })
         document.getElementById('forecast').innerHTML = 'Temperature: '+weatherForecast['temp']+'<br>'+weatherForecast['weather']['description'];
 }
