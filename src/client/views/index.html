@@ -3,7 +3,6 @@
     <head>
         <meta charset="utf-8">
         <title>Capstone App</title>
-        <link href="../styles/styles.css" rel=stylesheet>
         <link rel="icon" type="image/x-icon" href="/../media/favicon.ico">
     </head>
     <body>
@@ -31,6 +30,12 @@
         <footer>
             <p>Udacity Capstone Project 2024</p>
         </footer>
-        <script src="../index.js" type="text/javascript"></script>
+        <script>
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/service-worker.js');
+                });
+            }
+        </script>
     </body>
 </html>

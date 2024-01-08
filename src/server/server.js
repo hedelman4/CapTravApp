@@ -17,13 +17,13 @@ const cors = require('cors')
 app.use(cors());
 app.use(express.static('src/client'))
 
-app.listen(3000, function () {
-    console.log('Example app listening on port 3000!')
+app.listen(8080, function () {
+    console.log('Example app listening on port 8080!')
 })
 
 app.get('/', function (req, res) {
-    res.sendFile(path.resolve('src/client/views/index.html'))
-    //res.sendFile('dist/index.html')
+    //res.sendFile(path.resolve('src/client/views/index.html'))
+    res.sendFile(path.resolve('dist/index.html'))
 })
 
 app.get('/all', function (req, res) {

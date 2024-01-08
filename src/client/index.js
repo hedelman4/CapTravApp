@@ -1,4 +1,10 @@
-//import './styles/styles.scss'
+import { performAction } from "./js/app"
+import {fetchAll} from "./js/app"
+import './styles/styles.scss'
+
+let weatherDataLength = 16
+
+/*
 projectData = {}
 let weatherbit_Key = '1480091bdd174b2d985790709b87201b'
 let pixabay_Key = '41352822-6ee0ea802d31538dd01476bfa'
@@ -15,9 +21,10 @@ function fetchAll() {
             pixabay_Key = projectData.pixabay_Key
         }) 
 }
+*/
 
 fetchAll
-
+/*
 async function getWeatherData(cityName) {
     await fetch('https://api.weatherbit.io/v2.0/forecast/daily?city='+cityName+'&units=I&key='+weatherbit_Key)
         .then(res=>res.json())
@@ -43,6 +50,7 @@ async function performAction() {
     getImageData(cityName)
     document.getElementById('placeholder').innerHTML = 'The weather forecast in '+cityName+' on '+travDate+' will be:'
 }
+*/
 
 document.getElementById('submit').addEventListener('click', performAction)
 
