@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>Capstone App</title>
-        <link href="../styles/styles.css" rel=stylesheet>
+        <!-- <link href="../styles/styles.css" rel=stylesheet> -->
         <link rel="icon" type="image/x-icon" href="/../media/favicon.ico">
     </head>
     <body>
@@ -22,7 +22,7 @@
                 </div>
                 <div id="image"></div>
                 <div id="submit">
-                    <button type="button">Submit</button>
+                    <button type="submit" onclick="return Client.performAction()">Submit</button>
                 </div>
                 <div id="placeholder"></div>
                 <div id="forecast"></div>
@@ -31,6 +31,12 @@
         <footer>
             <p>Udacity Capstone Project 2024</p>
         </footer>
-        <script src="../index.js" type="module"></script>
+        <script>    
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/service-worker.js');
+                });
+            }
+        </script>
     </body>
 </html>

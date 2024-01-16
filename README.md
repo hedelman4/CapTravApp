@@ -16,3 +16,11 @@
     <li>Use Weather bit API to return weather forecasts given location and date</li>
     <li>Use Pixabay API to retyrb images based on location</li>
 </ul>
+
+## Instructions
+<ul>
+    <li>Run Application</li>
+    <li>Input a valid city name inside the Input City Name text form object</li>
+    <li>Select a date from the Input Travel Date dropdown form object</li>
+    <li>Click the Submit button and view the forecasted weather and image of associated city</li>
+</ul>

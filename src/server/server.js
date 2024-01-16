@@ -15,15 +15,16 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 const cors = require('cors')
 app.use(cors());
-app.use(express.static('src/client'))
+//app.use(express.static('src/client'))
+app.use(express.static('dist'))
 
 app.listen(3000, function () {
     console.log('Example app listening on port 3000!')
 })
 
 app.get('/', function (req, res) {
-    res.sendFile(path.resolve('src/client/views/index.html'))
-    //res.sendFile('dist/index.html')
+    //res.sendFile(path.resolve('src/client/views/index.html'))
+    res.sendFile('dist/index.html')
 })
 
 app.get('/all', function (req, res) {
