@@ -19,8 +19,6 @@
 
 ## Instructions
 <ul>
-    <li>Use node version v16.20.2</li>
-    <li>Use npm version 8.19.4</li>
     <li>Run Application</li>
     <li>Input a valid city name inside the Input City Name text form object</li>
     <li>Select a date from the Input Travel Date dropdown form object</li>
