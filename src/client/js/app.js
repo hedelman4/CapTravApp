@@ -16,17 +16,28 @@ async function getImageData(cityName,pixabay_Key,imageURL='') {
         document.getElementById('image').style.backgroundImage = "url('"+imageURL+"')"
 }
 
-async function performAction(cityName='',travDate='',weatherbit_Key='',pixabay_Key='') {
+async function getGeoData(cityName,geonames_ID,countryCode='') {
+    await fetch('http://api.geonames.org/postalCodeSearchJSON?placename='+cityName+'&maxRows=1&username='+geonames_ID)
+        .then(res=>res.json())
+        .then(geoData=>{
+            countryCode = geoData['postalCodes']['0']['countryCode']
+        })
+        document.getElementById('placeholder').innerHTML = 'The weather forecast in '+cityName+', '+countryCode+' will be:'
+}
+
+//Primary Function
+async function performAction(cityName='',weatherbit_Key='',pixabay_Key='',geonames_ID='') {
     cityName = document.getElementById('inputName').value
     await fetch('/all')
         .then(res=>res.json())
         .then(projectData=>{
             weatherbit_Key = projectData.weatherbit_Key
             pixabay_Key = projectData.pixabay_Key
+            geonames_ID = projectData.geonames_ID
         })
     getWeatherData(cityName,weatherbit_Key)
     getImageData(cityName,pixabay_Key)
-    document.getElementById('placeholder').innerHTML = 'The weather forecast in '+cityName+' on '+travDate+' will be:'
+    getGeoData(cityName,geonames_ID)
 }
 
 function buildDates() {
@@ -44,13 +55,3 @@ function buildDates() {
 }
 
 export{getWeatherData,getImageData,performAction,buildDates}
-
-/* GeoNames API seemingly not necessary for project
-let geonames_ID = ''
-geonames_ID = projectData.geonames_ID
-fetch('http://api.geonames.org/postalCodeSearchJSON?postalcode=10023&country=US&username=hedelman4')
-    .then(res=>res.json())
-    .then(geoData=>{
-        console.log(geoData)
-    })
-*/

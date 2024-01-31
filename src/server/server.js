@@ -1,9 +1,9 @@
 require('dotenv').config()
-//const geonames_ID = process.env.geonames_ID
+const geonames_ID = process.env.geonames_ID
 const weatherbit_Key = process.env.weatherbit_Key
 const pixabay_Key = process.env.pixabay_Key
 projectData = {}
-//projectData['geonames_ID'] = geonames_ID
+projectData['geonames_ID'] = geonames_ID
 projectData['weatherbit_Key'] = weatherbit_Key
 projectData['pixabay_Key'] = pixabay_Key
 

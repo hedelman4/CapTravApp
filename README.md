@@ -33,8 +33,8 @@
     <li>npm install mini-css-extract-plugin</li>
     <li>npm install terser-webpack-plugin</li>
 </ul>
-<p></p>
-    <li>Build application using npm run build-dev and npm run build-prod commands</li>
+<p>Launch the application</p>
+    <li>Build application using npm run build-dev and npm run build-prod commands<li>
     <li>Run Application using npm run start command</li>
     <li>Input a valid city name inside the Input City Name text form object</li>
     <li>Select a date from the Input Travel Date dropdown form object</li>
